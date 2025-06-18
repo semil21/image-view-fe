@@ -8,7 +8,7 @@ const LogoutButton = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  if (pathname === "/" || pathname === "/register") {
+  if (pathname === "/" || pathname === "/signup") {
     return null;
   }
 

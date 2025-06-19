@@ -37,15 +37,34 @@ const Login = () => {
     );
   }
 
-  const onSubmit = async (data: loginType) => {
-    const response = await LoginService(data);
-    localStorage.setItem("token", response?.token);
-    toast.success("Welcome back.", {
-      autoClose: 2000,
-      onClose: () => {
-        router.push("/dashboard");
-      },
-    });
+  // const onSubmit = async (data: loginType) => {
+  //   const response = await LoginService(data);
+  //   localStorage.setItem("token", response?.token);
+  //   toast.success("Welcome back.", {
+  //     autoClose: 2000,
+  //     onClose: () => {
+  //       router.push("/dashboard");
+  //     },
+  //   });
+  // };
+
+  const onSubmit = (data: loginType) => {
+    LoginService(data)
+      .then((response) => {
+        if (typeof window !== "undefined") {
+          localStorage.setItem("token", response?.token);
+          toast.success("Welcome back.", {
+            autoClose: 2000,
+            onClose: () => {
+              router.push("/dashboard");
+            },
+          });
+        }
+      })
+      .catch((error) => {
+        toast.error("Login failed. Please try again.");
+        console.error("Login error:", error);
+      });
   };
 
   return (

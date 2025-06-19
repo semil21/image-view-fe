@@ -37,17 +37,6 @@ const Login = () => {
     );
   }
 
-  // const onSubmit = async (data: loginType) => {
-  //   const response = await LoginService(data);
-  //   localStorage.setItem("token", response?.token);
-  //   toast.success("Welcome back.", {
-  //     autoClose: 2000,
-  //     onClose: () => {
-  //       router.push("/dashboard");
-  //     },
-  //   });
-  // };
-
   const onSubmit = (data: loginType) => {
     LoginService(data)
       .then((response) => {

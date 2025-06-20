@@ -8,9 +8,11 @@ import { useRouter } from "next/navigation";
 import Loader from "../loader/loader";
 import Link from "next/link";
 import Image from "next/image";
+import { useLogin } from "@/_hooks/login/login.hook";
 
 const Login = () => {
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const loginMutation = useLogin();
 
   const {
     register,
@@ -38,22 +40,7 @@ const Login = () => {
   }
 
   const onSubmit = (data: loginType) => {
-    LoginService(data)
-      .then((response) => {
-        if (typeof window !== "undefined") {
-          localStorage.setItem("token", response?.token);
-          toast.success("Welcome back.", {
-            autoClose: 2000,
-            onClose: () => {
-              router.push("/dashboard");
-            },
-          });
-        }
-      })
-      .catch((error) => {
-        toast.error("Login failed. Please try again.");
-        console.error("Login error:", error);
-      });
+    loginMutation.mutate(data);
   };
 
   return (

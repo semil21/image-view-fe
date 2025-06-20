@@ -10,20 +10,18 @@ type Props = {
 
 const ProtectedRoute = ({ children }: Props) => {
   const router = useRouter();
-
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    if (!token) {
+    // Invalid token values
+    if (!token || token === "undefined" || token === "null") {
       router.push("/");
+    } else {
+      setIsCheckingAuth(false); // Only continue when valid token
     }
   }, [router]);
-
-  setTimeout(() => {
-    setIsCheckingAuth(false);
-  }, 1000);
 
   if (isCheckingAuth) {
     return <Loader />;

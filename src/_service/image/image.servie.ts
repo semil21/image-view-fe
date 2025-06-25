@@ -7,7 +7,8 @@ export const addNewImageService = async (data: any) => {
         const saveImage = await axios.post(`${siteConfig.databaseUrl}/images/new`, data,
             {
                 headers: {
-                    Authorization: token
+                    Authorization: token,
+                    'ngrok-skip-browser-warning': 'true'
                 }
             }
         )
@@ -46,7 +47,8 @@ export const deleteImageService = async (imageId: string) => {
         const deleteImage = await axios.delete(`${siteConfig.databaseUrl}/images/delete/${imageId}`,
             {
                 headers: {
-                    Authorization: token
+                    Authorization: token,
+                    'ngrok-skip-browser-warning': 'true'
                 }
             }
         )

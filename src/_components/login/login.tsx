@@ -1,9 +1,8 @@
 "use client";
-import { LoginService } from "@/_service/login/login.service";
 import { loginType } from "@/_types/login.types";
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Loader from "../loader/loader";
 import Link from "next/link";

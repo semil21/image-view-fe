@@ -3,7 +3,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import { loginType } from "@/_types/login.types";
 import { LoginService } from "@/_service/login/login.service";
 
 export const useLogin = () => {

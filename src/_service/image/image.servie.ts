@@ -25,7 +25,8 @@ export const getAllImagesOfUserSrrvice = async () => {
         const getImagesRecord = await axios.get(`${siteConfig.databaseUrl}/images`,
             {
                 headers: {
-                    Authorization: token
+                    Authorization: token,
+                    'ngrok-skip-browser-warning': 'true'
                 }
             }
         )
